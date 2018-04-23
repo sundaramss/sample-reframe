@@ -36,3 +36,6 @@ Launch Browse: `http://localhost:3000`
 `$lein figwheel dev`
 
 Launch Browse: `http://localhost:3449`
+
+## Modularized Build app.js, vendor.js, cljs_base.js
+`$lein cljsbuild once min`

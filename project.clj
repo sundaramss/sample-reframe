@@ -59,11 +59,22 @@
     {:id           "min"
      :source-paths ["src/cljs"]
      :jar true
-     :compiler     {:main            sample.core
-                    :output-to       "resources/public/js/app.js"
-                    :optimizations   :advanced
-                    :closure-defines {goog.DEBUG false}
-                    :pretty-print    false}}
+     :compiler     {
+					:optimizations   :advanced	
+					:output-dir       "resources/public/js/"
+					:modules {
+            :vendor {
+             :output-to "resources/public/js/vendor.js"
+             :entries #{"re-frame.core"}
+            }
+						:main {
+             :output-to "resources/public/js/app.js"
+             :entries #{"sample.core"}
+             :depends-on #{:vendor}
+						}
+					}   
+          :closure-defines {goog.DEBUG false}
+          :pretty-print    false}}
 
     {:id           "test"
      :source-paths ["src/cljs" "test/cljs"]
